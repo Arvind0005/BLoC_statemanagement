@@ -1,3 +1,4 @@
+import 'package:bloc_state_management/newspage.dart';
 import 'package:flutter/material.dart';
 
 import 'counterbloc.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: NewsPage(),
     );
   }
 }
@@ -32,7 +33,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final counterBloc = CounterBloc();
 
-  void _incrementCounter() {}
+  @override
+  void dispose() {
+    counterBloc.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
